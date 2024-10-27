@@ -2,11 +2,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static tailwind_tags %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% tailwind_css %}
     <title>{% block title %}Django project{% endblock %}</title>
 </head>
 <body>
-    
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
 </body>
 </html>
