@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+
+{% block  title %}tweet list{% endblock %}
+
+{% block  content %}
+<a href=" {% url 'tweet_create' %} " class='btn'> Create a tweet</a>
+<div class="container px-9">
+    {% for tweet in tweets %}
+    <div class="max-w-sm rounded overflow-hidden shadow-lg border-black border-2">
+{% if tweet.photo %}
+    <img class="" src="{{ tweet.photo.url }}" layout="fill" alt="Tweet Photo">
+{% else %}
+    <p>No photo available</p>
+{% endif %}
+        
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">{{tweet.user.username}}</div>
+          <p class="text-gray-700 text-base">
+            {{tweet.text}}
+          </p>
+        </div>
+        <a href="{% url 'tweet_edit' tweet.id%} " class='btn'> Edit</a>
+        <a href="{% url 'tweet_delete' tweet.id%} " class='btn'> Delete</a>
+        
+      </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}
